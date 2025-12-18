@@ -53,7 +53,11 @@ public class Person {
     }
 
     public OptionalInt getAge() {
-        return OptionalInt.empty();
+         if (age != null) {
+            return OptionalInt.of(age);
+        } else {
+            return OptionalInt.empty();
+        }
     }
 
     public String getAddress() {
@@ -85,3 +89,4 @@ public class Person {
         return Objects.hash(name, surname, age, address);
     }
 }
+
