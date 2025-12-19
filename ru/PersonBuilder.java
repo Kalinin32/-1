@@ -9,7 +9,7 @@ public class PersonBuilder {
 
     public PersonBuilder setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Здесь не должно быть пусто!");
+            throw new IllegalArgumentException("Здесь должно быть имя!");
         }
         this.name = name;
         return this;
@@ -17,7 +17,7 @@ public class PersonBuilder {
 
     public PersonBuilder setSurname(String surname) {
         if (surname == null || surname.trim().isEmpty()) {
-            throw new IllegalArgumentException("Здесь не должно быть пусто!");
+            throw new IllegalArgumentException("Здесь должна быть фамилия!");
         }
         this.surname = surname;
         return this;
@@ -38,13 +38,15 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException("Нужно заполнить имя!");
+        if (name == null) {
+            throw new IllegalStateException("Не указано имя");
         }
-        if (surname.isEmpty()){
-            throw new IllegalArgumentException("Нужно заполнить фамилию!");
+        if (surname == null) {
+            throw new IllegalStateException("Не указана фамилия");
         }
         return new Person(name, surname, age, address);
     }
 }
+
+
 
